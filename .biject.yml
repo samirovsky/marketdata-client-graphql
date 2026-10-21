@@ -1,0 +1,3 @@
+# How biject builds, tests and measures this repository.
+test: coverage run -m pytest -q && coverage lcov -o lcov.info
+coverage: { format: lcov, path: lcov.info }

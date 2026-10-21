@@ -1,0 +1,22 @@
+# The operations this service sends to the Tickerline market data GraphQL API.
+
+query Quote($symbol: String!) {
+  quote(symbol: $symbol) {
+    symbol
+    price
+    currency
+  }
+}
+
+query DailyCloses($symbol: String!, $days: Int!) {
+  candles(symbol: $symbol, interval: DAY1, limit: $days) {
+    t
+    c
+  }
+}
+
+query IntradayCloses($symbol: String!) {
+  candles(symbol: $symbol, interval: MIN1, limit: 120) {
+    c
+  }
+}
